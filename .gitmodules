@@ -1,0 +1,3 @@
+[submodule "OpenRGB_MSI_USB/OpenRGB"]
+	path = OpenRGB_MSI_USB/OpenRGB
+	url = https://gitlab.com/CalcProgrammer1/OpenRGB.git

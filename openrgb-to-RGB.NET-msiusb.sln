@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29920.165
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RGB.NET.Devices.Msiusb", "RGB.NET.Devices.Msiusb\RGB.NET.Devices.Msiusb.csproj", "{CE51E6AB-B3F5-4FD2-B694-02BD58720301}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CB64F423-68AD-4A87-ACAC-74E05082032E} = {CB64F423-68AD-4A87-ACAC-74E05082032E}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenRGB_MSI_USB", "OpenRGB_MSI_USB\OpenRGB_MSI_USB.vcxproj", "{CB64F423-68AD-4A87-ACAC-74E05082032E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE51E6AB-B3F5-4FD2-B694-02BD58720301}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE51E6AB-B3F5-4FD2-B694-02BD58720301}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE51E6AB-B3F5-4FD2-B694-02BD58720301}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CE51E6AB-B3F5-4FD2-B694-02BD58720301}.Debug|x64.Build.0 = Debug|Any CPU
+		{CE51E6AB-B3F5-4FD2-B694-02BD58720301}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CE51E6AB-B3F5-4FD2-B694-02BD58720301}.Debug|x86.Build.0 = Debug|Any CPU
+		{CE51E6AB-B3F5-4FD2-B694-02BD58720301}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE51E6AB-B3F5-4FD2-B694-02BD58720301}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE51E6AB-B3F5-4FD2-B694-02BD58720301}.Release|x64.ActiveCfg = Release|Any CPU
+		{CE51E6AB-B3F5-4FD2-B694-02BD58720301}.Release|x64.Build.0 = Release|Any CPU
+		{CE51E6AB-B3F5-4FD2-B694-02BD58720301}.Release|x86.ActiveCfg = Release|Any CPU
+		{CE51E6AB-B3F5-4FD2-B694-02BD58720301}.Release|x86.Build.0 = Release|Any CPU
+		{CB64F423-68AD-4A87-ACAC-74E05082032E}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{CB64F423-68AD-4A87-ACAC-74E05082032E}.Debug|Any CPU.Build.0 = Debug|Win32
+		{CB64F423-68AD-4A87-ACAC-74E05082032E}.Debug|x64.ActiveCfg = Debug|x64
+		{CB64F423-68AD-4A87-ACAC-74E05082032E}.Debug|x64.Build.0 = Debug|x64
+		{CB64F423-68AD-4A87-ACAC-74E05082032E}.Debug|x86.ActiveCfg = Debug|Win32
+		{CB64F423-68AD-4A87-ACAC-74E05082032E}.Debug|x86.Build.0 = Debug|Win32
+		{CB64F423-68AD-4A87-ACAC-74E05082032E}.Release|Any CPU.ActiveCfg = Release|Win32
+		{CB64F423-68AD-4A87-ACAC-74E05082032E}.Release|x64.ActiveCfg = Release|x64
+		{CB64F423-68AD-4A87-ACAC-74E05082032E}.Release|x64.Build.0 = Release|x64
+		{CB64F423-68AD-4A87-ACAC-74E05082032E}.Release|x86.ActiveCfg = Release|Win32
+		{CB64F423-68AD-4A87-ACAC-74E05082032E}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {38DDBDBD-72FF-4FC1-B244-35B3D0C8FC48}
+	EndGlobalSection
+EndGlobal

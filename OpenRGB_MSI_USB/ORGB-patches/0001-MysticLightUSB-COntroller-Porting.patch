@@ -1,0 +1,81 @@
+From d371aa7141ab9260c67833a0b42d7c076c03dedb Mon Sep 17 00:00:00 2001
+From: Hex3l <me@hex3l.net>
+Date: Tue, 28 Apr 2020 20:13:21 +0200
+Subject: [PATCH] MysticLightUSB-COntroller-Porting
+
+---
+ .../MSIMysticLightController/MSIMysticLightController.cpp     | 1 +
+ .../MSIMysticLightController/MSIMysticLightController.h       | 4 ++--
+ .../MSIMysticLightControllerDetect.cpp                        | 2 ++
+ RGBController/RGBController_MSIMysticLight.cpp                | 2 +-
+ RGBController/RGBController_MSIMysticLight.h                  | 2 +-
+ 5 files changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/Controllers/MSIMysticLightController/MSIMysticLightController.cpp b/Controllers/MSIMysticLightController/MSIMysticLightController.cpp
+index 8b3ba02..08a1d87 100644
+--- a/Controllers/MSIMysticLightController/MSIMysticLightController.cpp
++++ b/Controllers/MSIMysticLightController/MSIMysticLightController.cpp
+@@ -11,6 +11,7 @@
+ #include <algorithm>
+ #include <array>
+ #include <bitset>
++#include <string>
+ 
+ MSIMysticLightController::MSIMysticLightController(hid_device* handle, const char *path)
+ {
+diff --git a/Controllers/MSIMysticLightController/MSIMysticLightController.h b/Controllers/MSIMysticLightController/MSIMysticLightController.h
+index badb16f..88c5886 100644
+--- a/Controllers/MSIMysticLightController/MSIMysticLightController.h
++++ b/Controllers/MSIMysticLightController/MSIMysticLightController.h
+@@ -118,9 +118,9 @@ struct Color
+ struct ZoneData
+ {
+     unsigned char effect = EFFECT::STATIC;
+-    Color color { std::numeric_limits<unsigned char>::max(), 0, 0 };
++    Color color { (std::numeric_limits<unsigned char>::max)(), 0, 0 };
+     unsigned char speedAndBrightnessFlags = 40;
+-    Color color2 { 0, std::numeric_limits<unsigned char>::max(), 0 };
++    Color color2 { 0, (std::numeric_limits<unsigned char>::max)(), 0 };
+     unsigned char colorFlags = 128;
+ 
+     const unsigned char padding = 0;
+diff --git a/Controllers/MSIMysticLightController/MSIMysticLightControllerDetect.cpp b/Controllers/MSIMysticLightController/MSIMysticLightControllerDetect.cpp
+index 3e41c27..c30b95f 100644
+--- a/Controllers/MSIMysticLightController/MSIMysticLightControllerDetect.cpp
++++ b/Controllers/MSIMysticLightController/MSIMysticLightControllerDetect.cpp
+@@ -1,3 +1,5 @@
++#include "../../../MSIMysticLightControllerDetect.h"
++
+ #include "MSIMysticLightController.h"
+ #include "RGBController_MSIMysticLight.h"
+ #include <algorithm>
+diff --git a/RGBController/RGBController_MSIMysticLight.cpp b/RGBController/RGBController_MSIMysticLight.cpp
+index a660019..c6c5649 100644
+--- a/RGBController/RGBController_MSIMysticLight.cpp
++++ b/RGBController/RGBController_MSIMysticLight.cpp
+@@ -140,8 +140,8 @@ void RGBController_MSIMysticLight::SetupModes()
+     constexpr unsigned int RANDOM_ONLY  = MODE_FLAG_HAS_BRIGHTNESS | MODE_FLAG_HAS_SPEED | MODE_FLAG_HAS_RANDOM_COLOR;
+     constexpr unsigned int COMMON       = RANDOM_ONLY | MODE_FLAG_HAS_PER_LED_COLOR;
+ 
+-    SetupMode("Off", DISABLE, 0);
+     SetupMode("Static", STATIC, MODE_FLAG_HAS_BRIGHTNESS | MODE_FLAG_HAS_PER_LED_COLOR);
++    SetupMode("Off", DISABLE, 0);
+     SetupMode("Breathing", BREATHING, COMMON);
+     SetupMode("Flashing", FLASHING, COMMON);
+     SetupMode("Double flashing", DOUBLE_FLASHING, COMMON);
+diff --git a/RGBController/RGBController_MSIMysticLight.h b/RGBController/RGBController_MSIMysticLight.h
+index 5744b46..f79aa9b 100644
+--- a/RGBController/RGBController_MSIMysticLight.h
++++ b/RGBController/RGBController_MSIMysticLight.h
+@@ -9,7 +9,7 @@
+ 
+ #pragma once
+ #include "RGBController.h"
+-#include "MSIMysticLightController.h"
++#include "../Controllers/MSIMysticLightController/MSIMysticLightController.h"
+ #include <vector>
+ 
+ class RGBController_MSIMysticLight: public RGBController
+-- 
+2.25.1.windows.1
+
