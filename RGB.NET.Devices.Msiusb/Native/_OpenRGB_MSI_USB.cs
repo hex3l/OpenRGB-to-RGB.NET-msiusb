@@ -18,14 +18,22 @@ namespace RGB.NET.Devices.Msiusb.Native
         private static extern int getNumberOfControllers();
 
         [DllImport(@"OpenRGB_MSI_USB.dll")]
+        private static extern void getControllerZones(int i, [Out, MarshalAs(UnmanagedType.SafeArray, SafeArraySubType = VarEnum.VT_BSTR)] out string[] zonesArray, [Out, MarshalAs(UnmanagedType.SafeArray, SafeArraySubType = VarEnum.VT_UINT)] out uint[] zonesLedsArray);
+
+        [DllImport(@"OpenRGB_MSI_USB.dll")]
+        [return: MarshalAs(UnmanagedType.BStr)]
+        private static extern string getControllerName(int i);
+
+        [DllImport(@"OpenRGB_MSI_USB.dll")]
         private static extern int setColor(int controller, int r, int g, int b);
 
         [DllImport(@"OpenRGB_MSI_USB.dll")]
         private static extern int setMode(int controller, [MarshalAs(UnmanagedType.BStr)] string mode);
 
-
         internal static void Initialize() => init();
         internal static int GetNumberOfControllers() => getNumberOfControllers();
+        internal static void GetControllerZones(int i, out string[] zonesArray, out uint[] zonesLedsArray) => getControllerZones(i, out zonesArray, out zonesLedsArray);
+        internal static string GetControllerName(int i) => getControllerName(i);
         internal static void SetColor(int controller, int r, int g, int b) => setColor(controller, r, g, b);
         internal static void SetMode(int controller, string mode) => setMode(controller, mode);
 

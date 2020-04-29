@@ -66,11 +66,14 @@ namespace RGB.NET.Devices.Msiusb
 
                 if(controllers > 0)
                 {
-                    for(int i = 0; i < controllers; i++)
+
+                    for (int i = 0; i < controllers; i++)
                     {
+                        string name = _OpenRGB_MSI_USB.GetControllerName(i);
+                        _OpenRGB_MSI_USB.GetControllerZones(i, out string[] zoneNames, out uint[] zoneLeds);
                         MsiusbDeviceUpdateQueue updateQueue = new MsiusbDeviceUpdateQueue(UpdateTrigger, i);
-                        IMsiusbRGBDevice motherboard = new MsiusbMysticLightRGBDevice(new MsiusbRGBDeviceInfo(RGBDeviceType.Mainboard, i, "MSI", "Mystic Light Motherboard USB"));
-                        motherboard.Initialize(updateQueue, 1);
+                        IMsiusbRGBDevice motherboard = new MsiusbMysticLightRGBDevice(new MsiusbRGBDeviceInfo(RGBDeviceType.Mainboard, i, "MSI-USB", name));
+                        motherboard.Initialize(updateQueue, zoneNames.Length);
                         devices.Add(motherboard);
                     }
                 }
