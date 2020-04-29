@@ -27,7 +27,7 @@ namespace RGB.NET.Devices.Msiusb.Generic
         protected override void Update(Dictionary<object, Color> dataSet)
         {
             foreach (KeyValuePair<object, Color> data in dataSet)
-                _OpenRGB_MSI_USB.SetColor(_deviceID, data.Value.GetR(), data.Value.GetG(), data.Value.GetB());
+                _OpenRGB_MSI_USB.SetZoneColor(_deviceID, (int)data.Key, data.Value.GetR(), data.Value.GetG(), data.Value.GetB());
         }
 
         #endregion

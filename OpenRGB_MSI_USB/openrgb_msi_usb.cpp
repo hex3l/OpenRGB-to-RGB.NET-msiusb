@@ -8,28 +8,63 @@
 #include "RGBController.h"
 #include "MSIMysticLightControllerDetect.h"
 
+// List of detected controllers
 std::vector<RGBController*> rgb_controllers;
 
-/*unsigned char* GetDeviceDescription(int i, unsigned char* buff) {
-    RGBController* controller = rgb_controllers.at(i);
-    return controller->GetDeviceDescription();
-}*/
-
-void setColor(int i, int r, int g, int b) {
-    RGBController* controller = rgb_controllers.at(i);
-    RGBColor color = ToRGBColor(r >> 2, g >> 2, b >> 2);
-    return controller->SetAllLEDs(color);
+// Directly using ToRGBColor was overflowing(?) the 2 most significant bits.
+// Pre-shifting seems a good temporary solution
+RGBColor toRgbColor(int r, int g, int b) {
+    return ToRGBColor(r >> 2, g >> 2, b >> 2);
 }
 
-BSTR getControllerName(int i) {
-    RGBController* controller = rgb_controllers.at(i);
+// Initialize the lib and detects controllers
+void init() {
+    DetectMSIMysticLightControllers(rgb_controllers);
+}
+
+/**
+* Return number of detected controllers
+*
+* @return length of 'rgb_controllers'
+*/
+int getNumberOfControllers() {
+    return rgb_controllers.size();
+}
+
+/**
+ * Returns controller's name
+ *
+ * @param[in] controller_idx index of controller in rgb_controllers
+ * @return controller's name
+ */
+BSTR getControllerName(int controller_idx) {
+    RGBController* controller = rgb_controllers.at(controller_idx);
     _bstr_t conv = controller->name.c_str();
-    
+
     return SysAllocString(conv);
 }
 
-void getControllerZones(int i, SAFEARRAY** zonesArray, SAFEARRAY** zonesLedsArray) {
-    RGBController* controller = rgb_controllers.at(i);
+/**
+ * Returns controller's description
+ *
+ * @param[in] controller_idx index of controller in rgb_controllers
+ * @return controller's description
+ */
+BSTR getControllerDescription(int controller_idx) {
+    RGBController* controller = rgb_controllers.at(controller_idx);
+    _bstr_t conv = controller->description.c_str();
+    return conv;
+}
+
+/**
+ * Returns controller zone's name and its leds number
+ *
+ * @param[in] controller_idx index of controller in rgb_controllers
+ * @param[out] zonesArray array of zone's name
+ * @param[out] zonesLedsArray array of zone's leds
+ */
+void getControllerZones(int controller_idx, SAFEARRAY** zonesArray, SAFEARRAY** zonesLedsArray) {
+    RGBController* controller = rgb_controllers.at(controller_idx);
 
     if (controller->zones.size() > 0)
     {
@@ -54,7 +89,7 @@ void getControllerZones(int i, SAFEARRAY** zonesArray, SAFEARRAY** zonesLedsArra
         *zonesLedsArray = SafeArrayCreate(VT_UINT, 1, &Bound);
 
         unsigned int HUGEP* pIntData;
-        HRESULT hr2 = SafeArrayAccessData(*zonesLedsArray, (void HUGEP* FAR*)&pIntData);
+        HRESULT hr2 = SafeArrayAccessData(*zonesLedsArray, (void HUGEP * FAR*) & pIntData);
         if (SUCCEEDED(hr2))
         {
             for (DWORD i = 0; i < controller->zones.size(); i++)
@@ -71,19 +106,43 @@ void getControllerZones(int i, SAFEARRAY** zonesArray, SAFEARRAY** zonesLedsArra
     }
 }
 
-void setZoneColor(int i, std::string zone, int r, int g, int b) {
-
-}
-
-void setMode(int i, unsigned char mode) {
-    RGBController* controller = rgb_controllers.at(i);
+/**
+ * Sets the controller to specified mode
+ *
+ * @param[in] controller_idx index of controller in rgb_controllers
+ * @param[in] mode mode id
+ */
+void setMode(int controller_idx, unsigned char mode) {
+    RGBController* controller = rgb_controllers.at(controller_idx);
     return controller->SetMode(mode);
 }
 
-void init() {
-    DetectMSIMysticLightControllers(rgb_controllers);
+/**
+ * Sets the specified led color
+ *
+ * @param[in] controller_idx index of controller in rgb_controllers
+ * @param[in] led_idx index of the led we need to change
+ * @param[in] r red
+ * @param[in] g green
+ * @param[in] b blue
+ */
+void setLedColor(int controller_idx, int led_idx, int r, int g, int b) {
+    RGBController* controller = rgb_controllers.at(controller_idx);
+    RGBColor color = toRgbColor(r, g, b);
+    return controller->SetLED(led_idx, color);
 }
 
-int getNumberOfControllers() {
-    return rgb_controllers.size();
+/**
+ * Sets the specified zone's leds color
+ *
+ * @param[in] controller_idx index of controller in rgb_controllers
+ * @param[in] led_idx index of the led we need to change
+ * @param[in] r red
+ * @param[in] g green
+ * @param[in] b blue
+ */
+void setZoneColor(int controller_idx, int zone_idx, int r, int g, int b) {
+    RGBController* controller = rgb_controllers.at(controller_idx);
+    RGBColor color = toRgbColor(r, g, b);
+    return controller->SetAllZoneLEDs(zone_idx, color);
 }

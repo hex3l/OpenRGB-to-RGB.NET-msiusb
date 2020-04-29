@@ -18,24 +18,33 @@ namespace RGB.NET.Devices.Msiusb.Native
         private static extern int getNumberOfControllers();
 
         [DllImport(@"OpenRGB_MSI_USB.dll")]
-        private static extern void getControllerZones(int i, [Out, MarshalAs(UnmanagedType.SafeArray, SafeArraySubType = VarEnum.VT_BSTR)] out string[] zonesArray, [Out, MarshalAs(UnmanagedType.SafeArray, SafeArraySubType = VarEnum.VT_UINT)] out uint[] zonesLedsArray);
+        [return: MarshalAs(UnmanagedType.BStr)]
+        private static extern string getControllerName(int controller_idx);
 
         [DllImport(@"OpenRGB_MSI_USB.dll")]
         [return: MarshalAs(UnmanagedType.BStr)]
-        private static extern string getControllerName(int i);
+        private static extern string getControllerDescription(int controller_idx);
 
         [DllImport(@"OpenRGB_MSI_USB.dll")]
-        private static extern int setColor(int controller, int r, int g, int b);
+        private static extern void getControllerZones(int controller_idx, [Out, MarshalAs(UnmanagedType.SafeArray, SafeArraySubType = VarEnum.VT_BSTR)] out string[] zonesArray, [Out, MarshalAs(UnmanagedType.SafeArray, SafeArraySubType = VarEnum.VT_UINT)] out uint[] zonesLedsArray);
 
         [DllImport(@"OpenRGB_MSI_USB.dll")]
-        private static extern int setMode(int controller, [MarshalAs(UnmanagedType.BStr)] string mode);
+        private static extern int setMode(int controller_idx, [MarshalAs(UnmanagedType.BStr)] string mode);
+
+        [DllImport(@"OpenRGB_MSI_USB.dll")]
+        private static extern int setLedColor(int controller_idx, int led_idx, int r, int g, int b);
+
+        [DllImport(@"OpenRGB_MSI_USB.dll")]
+        private static extern int setZoneColor(int controller_idx, int zone_idx, int r, int g, int b);
 
         internal static void Initialize() => init();
         internal static int GetNumberOfControllers() => getNumberOfControllers();
+        internal static string GetControllerName(int controller_idx) => getControllerName(controller_idx);
+        internal static string GetControllerDescription(int controller_idx) => getControllerDescription(controller_idx);
         internal static void GetControllerZones(int i, out string[] zonesArray, out uint[] zonesLedsArray) => getControllerZones(i, out zonesArray, out zonesLedsArray);
-        internal static string GetControllerName(int i) => getControllerName(i);
-        internal static void SetColor(int controller, int r, int g, int b) => setColor(controller, r, g, b);
         internal static void SetMode(int controller, string mode) => setMode(controller, mode);
+        internal static void SetLedColor(int controller, int led, int r, int g, int b) => setLedColor(controller, led, r, g, b);
+        internal static void SetZoneColor(int controller, int zone, int r, int g, int b) => setZoneColor(controller, zone, r, g, b);
 
         /*
         #region Libary Management
