@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace RGB.NET.Devices.Msiusb.Generic
+namespace Hex3l.RGB.NET.Devices.Msiusb.Generic
 {
     public abstract class MsiusbRGBDevice<TDeviceInfo> : AbstractRGBDevice<TDeviceInfo>, IMsiusbRGBDevice
          where TDeviceInfo : MsiusbRGBDeviceInfo

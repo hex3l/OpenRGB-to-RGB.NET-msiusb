@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 
-namespace RGB.NET.Devices.Msiusb.Native
+namespace Hex3l.RGB.NET.Devices.Msiusb.Native
 {
     internal static class _OpenRGB_MSI_USB
     {

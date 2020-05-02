@@ -1,13 +1,13 @@
 ﻿using RGB.NET.Core;
-using RGB.NET.Devices.Msiusb.Generic;
-using RGB.NET.Devices.Msiusb.MysticLightController;
-using RGB.NET.Devices.Msiusb.Native;
+using Hex3l.RGB.NET.Devices.Msiusb.Generic;
+using Hex3l.RGB.NET.Devices.Msiusb.MysticLightController;
+using Hex3l.RGB.NET.Devices.Msiusb.Native;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 
-namespace RGB.NET.Devices.Msiusb
+namespace Hex3l.RGB.NET.Devices.Msiusb
 {
     public class MsiusbDeviceProvider : IRGBDeviceProvider
     {

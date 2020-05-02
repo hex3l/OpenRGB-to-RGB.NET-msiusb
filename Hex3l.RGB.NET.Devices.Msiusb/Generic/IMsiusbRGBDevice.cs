@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RGB.NET.Devices.Msiusb.Generic
+namespace Hex3l.RGB.NET.Devices.Msiusb.Generic
 {
     interface IMsiusbRGBDevice : IRGBDevice
     {

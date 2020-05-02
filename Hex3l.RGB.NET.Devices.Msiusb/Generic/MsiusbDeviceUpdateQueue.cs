@@ -1,8 +1,8 @@
 ﻿using RGB.NET.Core;
-using RGB.NET.Devices.Msiusb.Native;
+using Hex3l.RGB.NET.Devices.Msiusb.Native;
 using System.Collections.Generic;
 
-namespace RGB.NET.Devices.Msiusb.Generic
+namespace Hex3l.RGB.NET.Devices.Msiusb.Generic
 {
     public class MsiusbDeviceUpdateQueue : UpdateQueue
     {

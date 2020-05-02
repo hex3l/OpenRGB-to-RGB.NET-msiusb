@@ -1,6 +1,6 @@
 ﻿using RGB.NET.Core;
 
-namespace RGB.NET.Devices.Msiusb
+namespace Hex3l.RGB.NET.Devices.Msiusb
 {
     public class MsiusbDeviceProviderLoader : IRGBDeviceProviderLoader
     {

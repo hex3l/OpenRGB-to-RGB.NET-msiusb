@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RGB.NET.Devices.Msiusb", "RGB.NET.Devices.Msiusb\RGB.NET.Devices.Msiusb.csproj", "{CE51E6AB-B3F5-4FD2-B694-02BD58720301}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hex3l.RGB.NET.Devices.Msiusb", "Hex3l.RGB.NET.Devices.Msiusb\Hex3l.RGB.NET.Devices.Msiusb.csproj", "{CE51E6AB-B3F5-4FD2-B694-02BD58720301}"
 	ProjectSection(ProjectDependencies) = postProject
 		{CB64F423-68AD-4A87-ACAC-74E05082032E} = {CB64F423-68AD-4A87-ACAC-74E05082032E}
 	EndProjectSection

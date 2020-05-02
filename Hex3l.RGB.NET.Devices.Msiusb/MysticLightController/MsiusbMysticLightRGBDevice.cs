@@ -1,7 +1,7 @@
 ﻿using RGB.NET.Core;
-using RGB.NET.Devices.Msiusb.Generic;
+using Hex3l.RGB.NET.Devices.Msiusb.Generic;
 
-namespace RGB.NET.Devices.Msiusb.MysticLightController
+namespace Hex3l.RGB.NET.Devices.Msiusb.MysticLightController
 {
     public class MsiusbMysticLightRGBDevice : MsiusbRGBDevice<MsiusbRGBDeviceInfo>
     {

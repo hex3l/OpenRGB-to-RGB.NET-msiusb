@@ -1,7 +1,7 @@
 ﻿using RGB.NET.Core;
 using System;
 
-namespace RGB.NET.Devices.Msiusb.Generic
+namespace Hex3l.RGB.NET.Devices.Msiusb.Generic
 {
     public class MsiusbRGBDeviceInfo : IRGBDeviceInfo 
     {
