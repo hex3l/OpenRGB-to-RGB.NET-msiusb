@@ -20,9 +20,10 @@ Minimal implementation of OpenRGB features required by this layer. It includes d
 
 1. Clone the repo with its submodules.
 2. Apply git patch in `OpenRGB_MSI_USB/ORGB-patches` to `OpenRGB_MSI_USB/OpenRGB`
-3. Build `Hex3l.RGB.NET.Devices.Msiusb`(Debug) (it will also build _OpenRGB_MSI_USB_)
-4. Get the 2 dlls and place them together in your `DeviceProvider` folder (the folder you are using to store your `DeviceProviders`)
-5. You will also need libusb-1.0.dll in your root app directory, you can get it from 
+3. Apply git patch in `OpenRGB_MSI_USB/ORGB-min-api-dll-patches` to `OpenRGB_MSI_USB/OpenRGB-min-api-dll-base`
+4. Build `Hex3l.RGB.NET.Devices.Msiusb`(Debug) (it will also build _OpenRGB_MSI_USB_)
+5. Get the 2 dlls and place them together in your `DeviceProvider` folder (the folder you are using to store your `DeviceProviders`)
+6. You will also need libusb-1.0.dll in your root app directory, you can get it from 
    - x86:`OpenRGB_MSI_USB/OpenRGB/dependencies/libusb-1.0.22/MS32/dll`
    - x64:`OpenRGB_MSI_USB/OpenRGB/dependencies/libusb-1.0.22/MS64/dll`
 
