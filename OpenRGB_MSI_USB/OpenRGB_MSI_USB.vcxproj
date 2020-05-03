@@ -144,19 +144,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="OpenRGB-min-api-dll-base\openrgb_api.cpp" />
     <ClCompile Include="OpenRGB\Controllers\MSIMysticLightController\MSIMysticLightController.cpp" />
     <ClCompile Include="OpenRGB\Controllers\MSIMysticLightController\MSIMysticLightControllerDetect.cpp" />
     <ClCompile Include="OpenRGB\dependencies\hidapi\hidapi.c" />
     <ClCompile Include="OpenRGB\RGBController\RGBController.cpp" />
     <ClCompile Include="OpenRGB\RGBController\RGBController_MSIMysticLight.cpp" />
-    <ClCompile Include="openrgb_msi_usb.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MSIMysticLightControllerDetect.h" />
+    <ClInclude Include="OpenRGB-min-api-dll-base\openrgb_api.h" />
     <ClInclude Include="OpenRGB\Controllers\MSIMysticLightController\MSIMysticLightController.h" />
     <ClInclude Include="OpenRGB\dependencies\hidapi\hidapi\hidapi.h" />
     <ClInclude Include="OpenRGB\dependencies\libusb-1.0.22\include\libusb-1.0\libusb.h" />
-    <ClInclude Include="openrgb_msi_usb.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

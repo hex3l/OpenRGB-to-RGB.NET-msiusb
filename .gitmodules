@@ -1,3 +1,6 @@
 [submodule "OpenRGB_MSI_USB/OpenRGB"]
 	path = OpenRGB_MSI_USB/OpenRGB
 	url = https://gitlab.com/CalcProgrammer1/OpenRGB.git
+[submodule "OpenRGB_MSI_USB/OpenRGB-min-api-dll-base"]
+	path = OpenRGB_MSI_USB/OpenRGB-min-api-dll-base
+	url = https://github.com/Hex3l/OpenRGB-min-api-dll-base.git

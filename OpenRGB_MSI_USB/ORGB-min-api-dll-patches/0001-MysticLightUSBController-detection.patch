@@ -1,0 +1,33 @@
+From ba9dc22c30ceed1edf80f201d42257fe5288d0e2 Mon Sep 17 00:00:00 2001
+From: Hex3l <me@hex3l.net>
+Date: Sun, 3 May 2020 22:28:07 +0200
+Subject: [PATCH] MysticLightUSBController detection
+
+---
+ openrgb_api.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/openrgb_api.cpp b/openrgb_api.cpp
+index 51e0630..f39b5bf 100644
+--- a/openrgb_api.cpp
++++ b/openrgb_api.cpp
+@@ -6,6 +6,7 @@
+ #include <comutil.h>
+ 
+ #include "RGBController.h"
++#include "../MSIMysticLightControllerDetect.h"
+ 
+ // List of detected controllers
+ std::vector<RGBController*> rgb_controllers;
+@@ -17,7 +18,7 @@ void init() {
+     //
+ 	//Detect and init devices here
+ 	//
+-	
++    DetectMSIMysticLightControllers(rgb_controllers);
+ }
+ 
+ /**
+-- 
+2.25.1.windows.1
+
