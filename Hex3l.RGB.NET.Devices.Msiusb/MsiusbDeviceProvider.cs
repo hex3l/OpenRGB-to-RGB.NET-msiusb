@@ -56,7 +56,7 @@ namespace Hex3l.RGB.NET.Devices.Msiusb
             {
                 UpdateTrigger?.Stop();
 
-                //_OpenRGB_MSI_USB.Reload();
+                _OpenRGB_MSI_USB.Reload();
 
                 IList<IRGBDevice> devices = new List<IRGBDevice>();
 
