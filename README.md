@@ -1,5 +1,5 @@
 # OpenRGB to RGB.NET msiusb
-Compatibility layer for RGB.NET
+Compatibility layer for **[RGB.NET](https://github.com/DarthAffe/RGB.NET)**
 
 This device provider uses OpenRGB's MysticLightUSBControllers implementation to control MysticLight USB controllers (only motherboards x570?)
 
